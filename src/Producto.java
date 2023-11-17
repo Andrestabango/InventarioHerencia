@@ -1,4 +1,6 @@
 import java.sql.SQLOutput;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class Producto {
@@ -7,7 +9,12 @@ public class Producto {
     double precio;
     String codigo;
     int cantidad,opcion;
-    
+
+
+
+
+
+
     String marca;
 
     public Producto() {
@@ -40,36 +47,45 @@ public class Producto {
         System.out.println("Marca del producto: "+marca);
     }
 
-public void menuPrincipal(){
+    public void menuPrincipal(){
+        Scanner sc = new Scanner(System.in);
+        int opcion;
 
-        Scanner sc= new Scanner(System.in);
-        System.out.println("MENU DE PRODUCTOS");
-        System.out.println("1.ALIMENTOS");
-        System.out.println("2.ELECTRODOMESTICOS");
-        System.out.println("3.TECNOLOGIA");
-        System.out.println("Ingrese el numero de la accion que desea hacer:");
-        this.opcion=sc.nextInt();
-        if(opcion==1){
-            System.out.println("ALIMENTOS");
-            Alimento a1=new Alimento();
-            a1.ingresarProducto();
-            a1.imprimirProducto();
-        }
-        else if(opcion==2){
-            System.out.println("ELECTRODOMESTICOS");
-            Electrodomestico e1=new Electrodomestico();
-            e1.ingresarProducto();
-            e1.imprimirProducto();
+        do {
+            System.out.println("MENU DE PRODUCTOS");
+            System.out.println("1. ALIMENTOS");
+            System.out.println("2. ELECTRODOMESTICOS");
+            System.out.println("3. TECNOLOGIA");
+            System.out.println("Ingrese el número de la acción que desea hacer:");
+            opcion = sc.nextInt();
+
+            switch(opcion) {
+                case 1:
+                    System.out.println("ALIMENTOS");
+                    Alimento a1 = new Alimento();
+                    a1.ingresarProducto();
+                    a1.imprimirProducto();
+
+                    break;
+                case 2:
+                    System.out.println("ELECTRODOMESTICOS");
+                    Electrodomestico e1 = new Electrodomestico();
+                    e1.ingresarProducto();
+                    e1.imprimirProducto();
+
+                    break;
+                case 3:
+                    System.out.println("TECNOLOGIA");
+                    Tecnologia t1 = new Tecnologia();
+                    t1.ingresarProducto();
+                    t1.imprimirProducto();
+
+                    break;
+                default:
+                    System.out.println("La opción es incorrecta");
             }
-        else if(opcion==3){
-            System.out.println("TECNOLOGIA");
-            Tecnologia t1=new Tecnologia();
-            t1.ingresarProducto();
-            t1.imprimirProducto();
-            }
-        }
-
-
+        } while (opcion < 1 || opcion > 3);
+    }
 
     }
 
